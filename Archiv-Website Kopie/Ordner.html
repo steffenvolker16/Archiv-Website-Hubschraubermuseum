@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordner | Hubschraubermuseum Bückeburg Archiv</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
+    <link rel="stylesheet" href="./Ordner.css?v=<?= filemtime('Ordner.css') ?>">
+</head>
+<body>
+    <div>
+        <aside>
+        <div class="sidebar">
+                <a href="Archiv.html">
+                    <span class="material-symbols-outlined">home</span>
+                    <h3>Startseite</h3>
+                </a> 
+                <a href="">
+                    <span class="material-symbols-outlined">book</span>
+                    <h3>Bücher</h3>
+                </a> 
+                <a href="Zeitschriften.html">
+                    <span class="material-symbols-outlined">news</span>
+                    <h3>Zeitschriften</h3>
+                </a> 
+                <a href="Ordner.html" aria-current="page">
+                    <span class="material-symbols-outlined">folder</span>
+                    <h3>Ordner</h3>
+                </a>
+        </div>
+    </aside>
+    <main class="Ordnerseite">
+        <h1>Ordner</h1>
+        <p class="Ordnerseite-Einleitung">Wählen Sie einen Hubschraubertyp aus, um die hinterlegten Details zu sehen.</p>
+        <div class="Suchleiste">
+            <form id="ordner-suche">
+                <label for="search">Suche:</label>
+                <input class="Suchfeld" type="text" id="search" name="search" placeholder="Suchbegriff eingeben" list="suchvorschlaege" autocomplete="off">
+                <datalist id="suchvorschlaege">
+                    <option value="Sikorsky"></option>
+                    <option value="MBB"></option>
+                    <option value="Bölkow"></option>
+                    <option value="Focke"></option>
+                </datalist>
+                <button id="search-button" type="button">Suchen</button> 
+            </form>
+        </div>
+
+        
+            <div id="Ordnertabelle"></div>
+
+                        <script>
+                            fetch("Ordnertabelle.html")
+                                .then(response => response.text())
+                                .then(data => {
+                                    document.getElementById("Ordnertabelle").innerHTML = data;
+                                });
+                        </script>
+            </div>
+
+    </main>
+    </div>
+    <script>
+        const searchField = document.querySelector('#search');
+        const searchForm = document.querySelector('#ordner-suche');
+        const searchButton = document.querySelector('#search-button');
+
+        function normalize(value) {
+            return value.trim().toLocaleLowerCase('de-DE');
+        }
+
+        function goToSearchResult(searchTerm) {
+            const term = normalize(typeof searchTerm === 'string' ? searchTerm : searchField.value);
+            if (!term || term === 'ordner' || term === 'ordnern') return;
+
+            const targets = document.querySelectorAll('.Ordner-Tabelle th, .Ordner-Tabelle summary');
+            const target = Array.from(targets).find(function (element) {
+                const text = normalize(element.textContent);
+                return text.includes(term) || term.includes(text);
+            });
+
+            if (!target) return;
+
+            const details = target.closest('details');
+            if (details) details.open = true;
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            target.classList.add('Suchtreffer');
+            setTimeout(function () { target.classList.remove('Suchtreffer'); }, 2500);
+        }
+
+        searchForm.addEventListener('submit', (event) => 
+        {
+            event.preventDefault();
+            goToSearchResult();
+        });
+        searchButton.addEventListener('click', goToSearchResult);
+
+        const urlSearch = new URLSearchParams(window.location.search).get('suche');
+        if (urlSearch) {
+            searchField.value = urlSearch;
+            window.requestAnimationFrame(function () { goToSearchResult(urlSearch); });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined">
+    <link rel="stylesheet" href="./Archiv.css?v=<?= filemtime('Archiv.css') ?>">
+</head>
+<body>
+    <div class="container">
+    <aside>
+        <div class="sidebar">
+                <a href="./Archiv.html">
+                    <span class="material-symbols-outlined">home</span>
+                    <h3>Startseite</h3>
+                </a> 
+                <a href="">
+                    <span class="material-symbols-outlined">book</span>
+                    <h3>Bücher</h3>
+                </a> 
+                <a href="Zeitschriften.html">
+                    <span class="material-symbols-outlined">news</span>
+                    <h3>Zeitschriften</h3>
+                </a> 
+                <a href="Ordner.html" aria-current="page">
+                    <span class="material-symbols-outlined">folder</span>
+                    <h3>Ordner</h3>
+                </a>
+        </div>
+    </aside>
+    <div class="oben">
+        <div class="Überschrift">
+                <h2>Hubschraubermuseum Bückeburg</h2>
+                <h2>Archiv</h2>
+        </div>
+        <img class="Bild" src="./RO_20260603_117.JPG" alt="Hubschraubermuseum Bückeburg">
+    </div>
+
+    <main>
+        <div class="Hauptseite">
+            <h2>Willkommen</h2>
+            <p>Das Archiv des Hubschraubermuseum Bückeburg verfügt über mehr als 730.000 Dateien.</p>
+        </div>
+        <div class="Suchleiste">
+            <form id="archiv-suche" role="search">
+                <label for="search">Archiv durchsuchen:</label>
+                <input class="Suchfeld" type="search" id="search" name="search" placeholder="Zeitschrift oder Ordner suchen" list="archiv-suchvorschlaege" autocomplete="off">
+                <datalist id="archiv-suchvorschlaege">
+                    <option value="Air Pictorial"></option>
+                    <option value="Cockpit"></option>
+                    <option value="Flieger Revue"></option>
+                    <option value="Helico Revue"></option>
+                    <option value="Rotor-Journal"></option>
+                    <option value="Hubschrauberforum"></option>
+                    <option value="Flettner"></option>
+                    <option value="Focke"></option>
+                    <option value="Nagler-Rolz"></option>
+                    <option value="MIL"></option>
+                    <option value="Eurocopter"></option>
+                    <option value="Bölkow"></option>
+                    <option value="CH-53"></option>
+                    <option value="Airbus"></option>
+                </datalist>
+                <button type="submit">Suchen</button> 
+            </form>
+            <p class="Suchhinweis" id="suchhinweis" role="status" aria-live="polite">Durchsucht Zeitschriften und Ordner.</p>
+        </div>
+        <section class="Schnellzugriff" aria-labelledby="quick-access-heading">
+            <h2 id="quick-access-heading">Schnellzugriff</h2>
+            <div class="Schnellzugriff-Karten">
+                <a class="Schnellzugriff-Karte" href="#">
+                    <span class="material-symbols-outlined" aria-hidden="true">book</span>
+                    <h3>Bücher</h3>
+                    <p>Publikationen und Fachliteratur</p>
+                </a>
+                <a class="Schnellzugriff-Karte" href="./Zeitschriften.html">
+                    <span class="material-symbols-outlined" aria-hidden="true">newspaper</span>
+                    <h3>Zeitschriften</h3>
+                    <p>Magazine und Presseberichte</p>
+                </a>
+                <a class="Schnellzugriff-Karte" href="./Ordner.html">
+                    <span class="material-symbols-outlined" aria-hidden="true">folder</span>
+                    <h3>Ordner</h3>
+                    <p>Dokumente und Unterlagen</p>
+                </a>
+                <a class="Schnellzugriff-Karte" href="#">
+                    <span class="material-symbols-outlined" aria-hidden="true">photo_camera</span>
+                    <h3>Fotos</h3>
+                    <p>Historische Aufnahmen</p>
+                </a>
+            </div>
+        </section>
+        <h3 class="Unterlagen">Bei benötigten Unterlagen füllen Sie bitte das Formular aus</h3>
+        <form class="Formular" method="post" action="Archiv.html">
+                <input type="hidden" name="form_type" value="anfrage">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Name eingeben" required>
+                <label for="email">E-Mail:</label>
+                <input type="email" id="email" name="email" placeholder="E-Mail eingeben" required>
+                <label for="unterlagen">Benötigte Unterlagen:</label>
+                <input type="text" id="unterlagen" name="unterlagen" placeholder="Benötigte Unterlagen eingeben">
+                <label for="hubschraubertyp">Hubschraubertyp:</label>
+                <input type="text" id="hubschraubertyp" name="hubschraubertyp" placeholder="Hubschraubertyp eingeben">
+                <label for="message">Nachricht:</label>
+                <textarea id="message" name="message" placeholder="Nachricht eingeben"></textarea>
+                <button type="submit">Absenden</button>
+                <?php if ($formStatus !== ''): ?>
+                    <p class="Formular-Status" role="status"><?= htmlspecialchars($formStatus, ENT_QUOTES, 'UTF-8') ?></p>
+                <?php endif; ?>
+                <?php if ($formError !== ''): ?>
+                    <p class="Formular-Fehler" role="alert"><?= htmlspecialchars($formError, ENT_QUOTES, 'UTF-8') ?></p>
+                <?php endif; ?>
+        </form>
+        <div class="Fußzeile">
+            <div>
+                <p>Ansprechpartner:</p>
+                <p>E-Mail:</p>
+                <p>Telefon:</p>
+            </div>
+            <div>
+                <p>Steffen Volker</p>
+                <p>s.volker@hubschraubermuseum.de</p>
+                <p>0151/14458479</p>
+            </div>
+            <div>
+                <p>Wolfgang Gastorf</p>
+                <p>w.gastorf@hubschraubermuseum.de</p>
+                <p>///</p>
+            </div>
+            <div>
+                <p>Hubschraubermuseum Bückeburg</p>
+                <p>Adresse:</p>
+                <p>Öffnungszeiten:</p>
+            </div>
+            <div>
+                <p>/</p>
+                <p>Sable-Platz 6, 31675 Bückeburg</p>
+                <p>Mo - Fr: 10:00 - 17:00 Uhr</p>
+            </div>
+        </div>
+    </main>
+    </div>
+    <script>
+        const archivSuche = document.getElementById('archiv-suche');
+        const archivSuchfeld = document.getElementById('search');
+        const suchhinweis = document.getElementById('suchhinweis');
+        const zeitschriften = [
+            'air pictorial', 'cockpit', 'der flieger', 'flieger revue', 'der flugmodellbau',
+            'flug- und modelltechnik', 'helico revue', 'lsk', 'zeitschrift für flugtechnik und motorluftschiffahrt',
+            'modell', 'rotor-journal', 'deutsche sportflieger', 'hubschrauberforum', 'flugrevue', 'interavia',
+            'rotorblatt', 'vertical', 'rotor', 'nach vorn'
+        ];
+        const ordner = [
+            'flettner', 'focke', 'nagler-rolz', 'achenbach', 'mil', 'eurocopter', 'mbb', 'bölkow',
+            'ch-53', 'airbus', 'fl 184', 'fl 185', 'fl 265', 'fl 282', 'fl 285', 'fl 339',
+            'traghubschrauber', 'fw 61', 'fa 223 drache', 'fa 266 hornisse', 'fa 224 libelle', 'fa 269',
+            'fa 283', 'fa 284', 'fa 330 bachstelze', 'fa 336', 'mi-1', 'mi-2', 'mi-3', 'mi-4', 'mi-5',
+            'mi-6', 'mi-7', 'mi-8', 'mi-10', 'mi-12', 'mi-14', 'mi-17', 'mi-18', 'mi-20', 'mi-22',
+            'mi-24', 'mi-26', 'mi-32', 'mi-171', 'ec-135'
+        ];
+
+        archivSuche.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const suchbegriff = archivSuchfeld.value.trim();
+            const normalisiert = suchbegriff.toLocaleLowerCase('de-DE');
+
+            if (!normalisiert) {
+                suchhinweis.textContent = 'Bitte geben Sie einen Suchbegriff ein.';
+                archivSuchfeld.focus();
+                return;
+            }
+
+            const istZeitschrift = zeitschriften.some(function (eintrag) { return eintrag.includes(normalisiert) || normalisiert.includes(eintrag); });
+            const istOrdner = ordner.some(function (eintrag) { return eintrag.includes(normalisiert) || normalisiert.includes(eintrag); });
+
+            if (istZeitschrift || ['zeitschrift', 'zeitschriften', 'magazin', 'magazine'].includes(normalisiert)) {
+                window.location.href = 'Zeitschriften.html?suche=' + encodeURIComponent(suchbegriff);
+            } else if (istOrdner || ['ordner', 'ordnern'].includes(normalisiert)) {
+                window.location.href = 'Ordner.html?suche=' + encodeURIComponent(suchbegriff);
+            } else {
+                suchhinweis.textContent = 'Kein Eintrag gefunden. Versuchen Sie einen Zeitschriftentitel oder einen Ordnernamen.';
+            }
+        });
+    </script>
+</body>
+</html>
