@@ -1,0 +1,325 @@
+:root
+{
+    --color-primary: rgb(24, 109, 220);
+    --color-danger: rgb(242, 87, 87);
+    --color-success: rgb(123, 239, 7);
+    --color-warning: orange;
+    --color-white: #f6f6f9;
+    --color-dark:rgb(47, 47, 47);
+    --color-info-dark: rgb(94, 94, 94);
+    --color-light: rgb(234, 235, 253);
+
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-dark);
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body
+{
+    width: 100vw;
+    height: 100vh;
+    font-size: 0.88rem;
+    background: var(--color-white);
+    user-select: none;
+    overflow-x: hidden;
+}
+
+container
+{
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 23rem;
+}
+
+aside
+{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+aside .sidebar
+{
+    
+    display: flex;
+    flex-direction: row;
+    gap: 15%;
+    text-align: center;
+    justify-content: center;
+    padding: 0.2rem;
+    font-size: 10px;
+    background-color: grey;
+    height: 3rem;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 1rem;
+    border-radius: var(--border-radius-2);
+}
+
+aside .sidebar a
+{
+    color: white;
+}
+
+.oben
+{
+    position: relative;
+}
+
+.Bild
+{
+    display: block;
+    width: 100%;
+    height: calc(100vh - 3rem);
+    margin: 0rem auto;
+    object-fit: cover;
+}
+
+.Überschrift
+{
+    font-size: 25px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    text-align: left;
+    text-align: center;
+    background-color: lightgray;
+    color: white;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius-3);
+    padding: 2rem;
+    width: fit-content;
+    margin: 3rem auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+}
+
+.Hauptseite
+{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3rem;
+    gap: 1rem;
+    text-align: center;
+}
+
+.Hauptseite h2
+{
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.Hauptseite p
+{
+    font-size: 1.2rem;
+    color: var(--color-info-dark);
+    line-height: 1.6rem;
+}
+
+.Suchleiste
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size: 22px;
+    flex-direction: column;
+}
+
+.Suchleiste form
+{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.Suchhinweis
+{
+    min-height: 1.2rem;
+    font-size: 0.9rem;
+    color: var(--color-info-dark);
+}
+
+.Suchleiste .Suchfeld
+{
+    width: 30rem;
+    height: 3rem;
+    border-radius: var(--border-radius-2);
+    padding: 0.8rem 1.2rem;
+    background-color: lightgrey;
+}
+
+.Suchleiste button
+{
+    width: 8rem;
+    height: 3rem;
+    border-radius: var(--border-radius-2);
+    background-color: darkgreen;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.Schnellzugriff
+{
+    width: min(70rem, calc(100% - 2rem));
+    margin: 0 auto 4rem;
+    text-align: center;
+}
+
+.Schnellzugriff h2
+{
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.Schnellzugriff-Karten
+{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.Schnellzugriff-Karte
+{
+    display: flex;
+    min-height: 11rem;
+    padding: 1.5rem 1rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    border-radius: var(--border-radius-2);
+    background-color: lightgrey;
+    color: var(--color-dark);
+    box-shadow: 0 0.4rem 1rem rgba(47, 47, 47, 0.15);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.Schnellzugriff-Karte:hover,
+.Schnellzugriff-Karte:focus-visible
+{
+    transform: translateY(-0.3rem);
+    background-color: green;
+    color: white;
+}
+
+.Schnellzugriff-Karte span
+{
+    font-size: 2.5rem;
+}
+
+.Schnellzugriff-Karte h3
+{
+    font-size: 1.2rem;
+}
+
+.Schnellzugriff-Karte p
+{
+    color: inherit;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 700px)
+{
+    .Schnellzugriff-Karten
+    {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.Unterlagen
+{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    font-size: 22px;
+}
+
+.Formular
+{
+    margin-bottom: 3rem;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.Formular input,
+.Formular textarea
+{
+    width: min(30rem, calc(100% - 2rem));
+    padding: 0.8rem 1.2rem;
+    border-radius: var(--border-radius-2);
+    background-color: lightgrey;
+}
+
+.Formular button
+{
+    width: 8rem;
+    height: 2rem;
+    border-radius: var(--border-radius-2);
+    background-color: darkgreen;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.Formular-Status,
+.Formular-Fehler
+{
+    width: min(30rem, calc(100% - 2rem));
+    padding: 0.8rem 1.2rem;
+    border-radius: var(--border-radius-1);
+    text-align: center;
+}
+
+.Formular-Status
+{
+    background: #dff3df;
+    color: #176b17;
+}
+
+.Formular-Fehler
+{
+    background: #fde2e2;
+    color: #9b1c1c;
+}
+
+.Fußzeile
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size: 12px;
+    background-color: darkgrey;
+    padding: 1rem;
+}

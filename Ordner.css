@@ -1,0 +1,240 @@
+:root
+{
+    --color-primary: rgb(24, 109, 220);
+    --color-danger: rgb(242, 87, 87);
+    --color-success: rgb(123, 239, 7);
+    --color-warning: orange;
+    --color-white: #f6f6f9;
+    --color-dark:rgb(47, 47, 47);
+    --color-info-dark: rgb(94, 94, 94);
+    --color-light: rgb(234, 235, 253);
+
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-dark);
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body
+{
+    width: 100vw;
+    height: 100vh;
+    font-size: 0.88rem;
+    background: var(--color-white);
+    user-select: none;
+    overflow-x: hidden;
+}
+
+aside .sidebar
+{
+    
+    display: flex;
+    flex-direction: row;
+    gap: 15%;
+    text-align: center;
+    justify-content: center;
+    padding: 0.2rem;
+    font-size: 10px;
+    background-color: grey;
+    height: 3rem;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 1rem;
+    border-radius: var(--border-radius-2);
+}
+
+aside .sidebar a
+{
+    color: white;
+}
+
+.Suchleiste
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size: 22px;
+}
+
+.Suchleiste .Suchfeld
+{
+    width: 30rem;
+    height: 3rem;
+    border-radius: var(--border-radius-2);
+    padding: 0.8rem 1.2rem;
+    background-color: lightgrey;
+}
+
+.Suchleiste button
+{
+    width: 8rem;
+    height: 3rem;
+    border-radius: var(--border-radius-2);
+    background-color: darkgreen;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.Ordnerseite
+{
+    width: min(70rem, calc(100% - 2rem));
+    margin: 4rem auto;
+}
+
+.Ordnerseite h1
+{
+    margin-bottom: 0.75rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.Ordnerseite-Einleitung
+{
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--color-info-dark);
+    font-size: 1rem;
+}
+
+.Ordner-Tabelle
+{
+    overflow: hidden;
+    border-radius: var(--border-radius-2);
+    background-color: white;
+    box-shadow: 0 0.4rem 1rem rgba(47, 47, 47, 0.15);
+    margin-bottom: 1rem;
+}
+
+.Ordner-Tabelle table
+{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.Ordner-Tabelle th
+{
+    padding: 1rem 1.25rem;
+    background-color: darkgreen;
+    color: white;
+    text-align: left;
+    font-size: 1rem;
+    scroll-margin-top: 1rem;
+}
+
+.Ordner-Tabelle td
+{
+    border-bottom: 1px solid #d5d5d5;
+}
+
+.Ordner-Tabelle tr:last-child td
+{
+    border-bottom: 0;
+}
+
+.Ordner-Tabelle summary
+{
+    padding: 1.1rem 1.25rem;
+    cursor: pointer;
+    color: var(--color-dark);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.Ordner-Tabelle summary:hover
+{
+    background-color: lightgray;
+}
+
+.Ordner-Tabelle th.Suchtreffer,
+.Ordner-Tabelle summary.Suchtreffer
+{
+    background-color: lightgray;
+    color: var(--color-dark);
+    transition: background-color 0.3s ease;
+}
+
+.Hubschrauber-Details
+{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-top: 1.25rem;
+    margin-left: 2rem;
+}
+
+.Ordnertabelle-img
+{
+    width: 20%;
+    height: auto;
+    display: block;
+    transition: transform 0.25s ease;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.Details
+{
+    display: flex;
+}
+
+.Hubschrauber-Details div
+{
+    padding: 0.5rem;
+    border-radius: var(--border-radius-2);
+    background-color: lightgray;
+    height: fit-content;
+    width: 250px;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.Hubschrauber-Details dt
+{
+    margin-bottom: 0.3rem;
+    color: var(--color-info-dark);
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+}
+
+.Hubschrauber-Details dd
+{
+    margin-bottom: 0.3rem;
+    color: black;
+    font-size: 1rem;
+}
+
+@media (max-width: 600px)
+{
+    aside .sidebar
+    {
+        gap: 1.5rem;
+    }
+
+    .Ordnerseite
+    {
+        margin-top: 2rem;
+    }
+
+    .Hubschrauber-Details
+    {
+        grid-template-columns: 1fr;
+    }
+}

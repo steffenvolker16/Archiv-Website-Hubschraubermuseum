@@ -1,0 +1,384 @@
+:root
+{
+    --color-primary: rgb(24, 109, 220);
+    --color-danger: rgb(242, 87, 87);
+    --color-success: rgb(123, 239, 7);
+    --color-warning: orange;
+    --color-white: #f6f6f9;
+    --color-dark:rgb(47, 47, 47);
+    --color-info-dark: rgb(94, 94, 94);
+    --color-light: rgb(234, 235, 253);
+
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-dark);
+}
+
+*
+{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+body
+{
+    width: 100vw;
+    height: 100vh;
+    font-size: 0.88rem;
+    background: var(--color-white);
+    user-select: none;
+    overflow-x: hidden;
+}
+
+container
+{
+    display: grid;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 23rem;
+}
+
+aside .sidebar
+{
+    display: flex;
+    flex-direction: row;
+    gap: 15%;
+    text-align: center;
+    justify-content: center;
+    padding: 0.2rem;
+    font-size: 10px;
+    background-color: grey;
+    height: 3rem;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 1rem;
+    border-radius: var(--border-radius-2);
+}
+
+aside .sidebar a
+{
+    color: white;
+}
+
+.Fußzeile
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size: 12px;
+    background-color: darkgrey;
+    padding: 1rem;
+}
+
+.header
+{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 42px;
+}
+
+.Vorschau
+{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-radius: var(--border-radius-1);
+    box-shadow: var(--box-shadow);
+    background-color: var(--color-white);
+}
+
+.Header
+{
+    padding: 1rem;
+    color: green;
+    text-align: center;
+    font-size: 32px;
+}
+
+.Ausgaben
+{
+    display: flex;
+    gap: 2%;
+    padding: 1.2rem;
+}
+
+.magazine-trigger
+{
+    width: 15%;
+    position: relative;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    border-radius: var(--border-radius-1);
+    overflow: hidden;
+}
+
+.img
+{
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+/* Die übrigen Zeitschriften bleiben wie bisher in der Vorschau angeordnet. */
+.Ausgaben > .img
+{
+    width: 15%;
+}
+
+.magazine-trigger:hover .img,
+.magazine-trigger:focus-visible .img
+{
+    transform: scale(95%);
+}
+
+.magazine-trigger:focus-visible
+{
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+.Liste-Item summary.Suchtreffer
+{
+    color: green;
+    transition: color 0.3s ease;
+}
+
+.modal-is-open
+{
+    overflow: hidden;
+}
+
+.magazine-modal
+{
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.magazine-modal[aria-hidden="true"]
+{
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.magazine-modal__backdrop
+{
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.62);
+}
+
+.magazine-modal__content
+{
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(150px, 40%) 1fr;
+    gap: 1.5rem;
+    width: min(700px, 100%);
+    max-height: min(80vh, 650px);
+    padding: 1.5rem;
+    overflow-y: auto;
+    border-radius: var(--border-radius-2);
+    background: var(--color-white);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
+}
+
+.magazine-modal__cover img
+{
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 520px;
+    object-fit: contain;
+}
+
+.magazine-modal__info
+{
+    align-self: center;
+    color: var(--color-dark);
+    font-size: 1rem;
+    line-height: 1.55;
+}
+
+.magazine-modal__info h2
+{
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.magazine-modal__eyebrow
+{
+    color: green;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.magazine-modal__description
+{
+    margin-top: 1rem;
+}
+
+.magazine-modal__close
+{
+    position: absolute;
+    z-index: 2;
+    top: 0.5rem;
+    right: 0.75rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--color-light);
+    color: var(--color-dark);
+    cursor: pointer;
+    font-size: 1.7rem;
+    line-height: 1;
+}
+
+.magazine-modal__close:hover,
+.magazine-modal__close:focus-visible
+{
+    background: green;
+    color: white;
+}
+
+@media (max-width: 600px)
+{
+    .magazine-modal__content
+    {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 380px;
+    }
+
+    .magazine-modal__cover img
+    {
+        max-height: 42vh;
+    }
+}
+
+.Bild
+{
+    display: flex;
+}
+
+.Auswahl
+{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border-radius: var(--border-radius-1);
+    box-shadow: var(--box-shadow);
+    background-color: var(--color-white);
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.Liste-Item-Tabelle
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+}
+
+@media (max-width: 1600px)
+{
+    .Liste-Item-Tabelle
+    {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+}
+
+.Liste-Header
+{
+    padding: 1rem;
+    color: green;
+    text-align: center;
+    font-size: 1.5rem;
+    font-size: 32px;
+}
+
+.Liste-Item
+{
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--color-light);
+    margin-top: 2rem;
+}
+
+.Liste-Item .Points
+{
+    font-size: 20px;
+}
+
+.Liste-Item .Points:hover
+{
+    color: green;
+}
+
+.Details
+{
+    display: flex;
+    margin-left: 1.5rem;
+}
+
+.Übersicht-img
+{
+    width: 20%;
+    height: auto;
+    display: block;
+    transition: transform 0.25s ease;
+    margin-top: 1rem;
+}
+
+.Details-Übersicht
+{
+    margin-left: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+}
+
+.Container
+{
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    min-height: 50px;
+    border-radius: var(--border-radius-2);
+    background-color: rgb(151, 171, 191);
+}
+
+
+
+.Details-Übersicht-Header
+{
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+.Details-Übersicht-Info
+{
+    color: var(--color-info-dark);
+}
